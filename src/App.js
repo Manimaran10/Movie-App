@@ -26,7 +26,7 @@ export const movieList = [
   
   {
       title :'Premalu',
-      image :'https://assetscdn1.paytm.com/images/cinema/Premalu--705x750%20(1)-8f9226f0-e0fa-11ee-a3c7-f5f87f3f5d73.jpg',
+      image :'https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/f27206185852421.65ca1cecbd71e.jpg',
       rating : '7.9',
       summary :'Premalu is a 2024 Indian Malayalam-language romantic comedy film directed by Girish A. D. and produced by Bhavana Studios, in the company of Fahadh Faasil and Friends and Working Class Hero.'
   },

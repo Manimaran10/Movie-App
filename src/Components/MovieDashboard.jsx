@@ -18,13 +18,14 @@ export function MovieList({movieList}){
 export function MovieDisplay({poster,name,rating,summary,id}){
     const[toggle, setToggle]= useState (true);
     const navigate = useNavigate();
+    console.log('id is : '+ {id});
     
     return(
         <div className='movie-container-box'>
             <img className='movie-poster' src={poster} alt='poster'/>
             <div className='name-rating'>
                 <h5 className='movie-title'>{name}</h5>
-                <button onClick={()=>{navigate(`/movie-details/:${id}`)} }>i</button>
+                <button onClick={()=>{navigate(`/movie-details/${id}`)} }>i</button>
                 <button onClick={()=>setToggle(!toggle)}>{toggle ? "^" : 'v'}</button>
                 <h5 className='movie-rate'>⭐{rating}</h5>
             </div>

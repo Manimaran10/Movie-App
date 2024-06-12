@@ -8,16 +8,15 @@ export function MovieDetail({movieList}) {
     const { id } = useParams();
     console.log(id);
     const mov = movieList[id]
-    // const mov = movieList[id]
     return (
         <div className='movie-detailpage'>
             <div>
                 <img className='movie-detailpage-poster' src={mov.image} alt='poster' />
             </div>
             <div className='movie-detailpage-details'>
-                <h1>{movieList[0].title}</h1>
-                <h3>Rating ⭐: {movieList[0].rating}</h3>
-                <p>{movieList[0].summary}</p>
+                <h1>{mov.title}</h1>
+                <h3>Rating ⭐: {mov.rating}</h3>
+                <p>{mov.summary}</p>
             </div>
 
         </div>
