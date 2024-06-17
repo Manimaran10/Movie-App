@@ -1,6 +1,7 @@
 .App {
   /* text-align: center; */
   padding: 0px 0px 0px 0px;
+  
 }
 
 .App-logo {
@@ -83,6 +84,7 @@ body{
   grid-template-columns: repeat(auto-fit, minmax(400px,1fr)) ;
   justify-items: stretch;
   gap: 10px;
+  margin: 10px 10px 10px 10px;
   justify-items: center;
 }
 .movie-detailpage-poster{
@@ -91,18 +93,49 @@ body{
   object-fit: cover;
 }
 .addmovie-form{
-  justify-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .addmovie-form-div{
   display: flex;
   flex-direction: column;
   gap: 10px;
-  align-content:center;
+  justify-content: center;
+  margin-top: 20px;
+  align-items: center;
 }
-
 .appbar{
   height: 35px;
-  justify-content:center;
-  margin-bottom: 20px;
-  min-width: 200px;
+  margin-bottom: 15px;
+  justify-content: center;
 }
+.appbar-contents{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.appbar-div{
+  justify-content:center;
+}
+
+.welcome-homepage{
+  height: 500px;
+  width: 400px;
+  margin: 2px;
+  object-fit: cover;
+}
+.home-display{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(410px,1fr)) ;
+  gap: 3px;
+  justify-items: center;
+}
+.director{
+  margin: 5px 3px 5px 3px;
+}
+.quotes-tag{
+  margin: 5px 3px 5px 3px;
+}
+

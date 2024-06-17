@@ -9,13 +9,11 @@ import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
 import ExpandLessRoundedIcon from '@mui/icons-material/ExpandLessRounded';
 
 export function MovieList({movieList}){
-
-
     return (
     <div>
         <div className='movie-display-container'>
             {movieList.map((val,index)=>{
-                return <MovieDisplay key={index} poster = {val.image} name ={val.title} rating={val.rating} summary = {val.summary} id={index}/>
+                return <MovieDisplay key={index} poster = {val.poster} name ={val.name} rating={val.rating} summary = {val.summary} id={index}/>
             })}
         </div>
     </div> )
@@ -33,7 +31,7 @@ export function MovieDisplay({poster,name,rating,summary,id}){
             sx={{ height: 340 }}
             image={poster}
             title="poster"/>
-      <CardContent>
+        <CardContent>
         <Typography gutterBottom variant="h6" component="div">
         <div className='name-rating'>
             <h6 className='movie-title'>{name}</h6>
@@ -47,19 +45,6 @@ export function MovieDisplay({poster,name,rating,summary,id}){
         </Typography>
       </CardContent>
     </Card>
-            {/* <img className='movie-poster' src={poster} alt='poster'/>
-            <div className='name-rating'>
-                <h5 className='movie-title'>{name}</h5>
-                <button onClick={()=>{navigate(`/movie-details/${id}`)} }>i</button>
-                <button onClick={()=>setToggle(!toggle)}>{toggle ? "^" : 'v'}</button>
-                <h5 className='movie-rate'>⭐{rating}</h5>
-            </div>
-            <p className='movie-summary-tag'>{toggle ? summary : null}</p> */}
     </div>
     )
-}
-
-
-export function Home(){
-    return <h1>Welcome Home</h1>
 }
