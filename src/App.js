@@ -4,7 +4,7 @@ import { MovieList } from './Components/MovieDashboard';
 import { MovieDetail } from './Components/MovieDetail';
 import { Routes, Route, useNavigate} from "react-router-dom";
 import { Home } from './Components/Home';
-import { useState,useEffect } from 'react';
+import { useState } from 'react';
 import { AddMovie } from './Components/AddMovie';
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
@@ -28,12 +28,6 @@ function App() {
     },
   });
   
-  const [movieList,setMovieList] =  useState([]);
-  useEffect(()=>{
-    fetch("https://666f1937f1e1da2be521f8a9.mockapi.io/maran/movies")
-    .then((data)=>data.json())
-      .then ((mvs)=>setMovieList(mvs))
-  },[])
   const navigate = useNavigate();
   return (
     <ThemeProvider theme={darkTheme}>
@@ -56,9 +50,9 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/movie-details/:id" element={<MovieDetail movieList={movieList}/>} />
-        <Route path="/movie-list" element={<MovieList movieList={movieList} />} />
-        <Route path="/addmovie" element={<AddMovie movieList={movieList} setMovieList={setMovieList}/>} />
+        <Route path="/movie-details/:id" element={<MovieDetail/>} />
+        <Route path="/movie-list" element={<MovieList />} />
+        <Route path="/addmovie" element={<AddMovie/>} />
       </Routes>
     </div>
     </ThemeProvider>

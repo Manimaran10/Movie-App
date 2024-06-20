@@ -1,50 +1,48 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
-import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
-import ExpandLessRoundedIcon from '@mui/icons-material/ExpandLessRounded';
+import React, { useEffect, useState } from 'react';
+// import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { MovieDisplay } from './MovieDisplay';
+import { IconButton } from '@mui/material';
 
-export function MovieList({movieList}){
+export function MovieList(){
+    const [movieList,setMovieList] =  useState([]);
+  
+    const getMovie =()=>{
+        fetch("https://666f1937f1e1da2be521f8a9.mockapi.io/maran/movies")
+        .then((data)=>data.json())
+          .then ((mvs)=>setMovieList(mvs))
+    }
+    
+    useEffect(()=>getMovie(),[])
+
+    const deleteMovie=(id)=>{
+        console.log("Delete movie", id);
+        fetch(`https://666f1937f1e1da2be521f8a9.mockapi.io/maran/movies/${id}`,{
+            method : "DELETE"
+        })
+        .then(()=>getMovie());
+    }
+   
+
     return (
     <div>
         <div className='movie-display-container'>
-            {movieList.map((val,index)=>{
-                return <MovieDisplay key={index} poster = {val.poster} name ={val.name} rating={val.rating} summary = {val.summary} id={index}/>
+            {movieList.map((val)=>{
+                return <MovieDisplay key={val.id} 
+                poster = {val.poster}
+                name ={val.name} rating={val.rating}
+                summary = {val.summary} id={val.id}
+                deleteButton={
+                    <IconButton 
+                    sx={{marginLeft :'auto',
+                    }} color='error' onClick={()=>deleteMovie(val.id)}>
+                        <DeleteIcon fontSize='small'/>
+                    </IconButton>}
+                />
+                 
             })}
         </div>
     </div> )
 }
 
-export function MovieDisplay({poster,name,rating,summary,id}){
-    const[toggle, setToggle]= useState (true);
-    const navigate = useNavigate();
-    
-    return(
-        
-    <div className='movie-container-box'>
-        <Card sx={{ maxWidth: 210 }}>
-            <CardMedia
-            sx={{ height: 340 }}
-            image={poster}
-            title="poster"/>
-        <CardContent>
-        <Typography gutterBottom variant="h6" component="div">
-        <div className='name-rating'>
-            <h6 className='movie-title'>{name}</h6>
-            <InfoRoundedIcon color="primary" fontSize="smaller" onClick={()=>{navigate(`/movie-details/${id}`)}}/>
-            <span onClick={()=>setToggle(!toggle)}>{toggle ? <ExpandLessRoundedIcon fontSize="small" /> : <ExpandMoreRoundedIcon fontSize="small"/>}</span>
-                <h5 className='movie-rate'>⭐{rating}</h5>
-        </div>
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-        <p className='movie-summary-tag'>{toggle ? summary : null}</p>
-        </Typography>
-      </CardContent>
-    </Card>
-    </div>
-    )
-}
+

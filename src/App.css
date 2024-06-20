@@ -138,4 +138,7 @@ body{
 .quotes-tag{
   margin: 5px 3px 5px 3px;
 }
-
+.delete-icon{
+ margin-left: auto;
+ cursor: pointer;
+}
