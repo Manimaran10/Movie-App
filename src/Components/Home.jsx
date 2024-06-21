@@ -24,9 +24,9 @@ export function HomeFun({director,image,quotes}) {
     // console.log(director);
     return(
     <div className='welcome-homepage' >
-        <Card sx={{ maxWidth: 420 }}>
+        <Card sx={{ maxWidth: 360 }}>
             <CardMedia
-            sx={{ height: 300 }}
+            sx={{ height: 260 }}
             image={image}
             title="poster"/>
         <CardContent>

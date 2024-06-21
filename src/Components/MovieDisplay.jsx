@@ -54,7 +54,6 @@ export function MovieDisplay({ poster, name, rating, summary, id,deleteButton })
                         sx={{fontSize : 'medium'}}
                         onClick={()=>likedMovie()}
                         color={likeValue ? 'primary' : 'null'}
-                        
                         >👍</IconButton>
                     <IconButton 
                         sx={{fontSize : 'medium'}}

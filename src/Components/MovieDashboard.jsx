@@ -17,11 +17,12 @@ export function MovieList(){
 
     const deleteMovie=(id)=>{
         console.log("Delete movie", id);
-        fetch(`https://666f1937f1e1da2be521f8a9.mockapi.io/maran/movies/${id}`,{
-            method : "DELETE"
-        })
-        .then(()=>getMovie());
+        // fetch(`https://666f1937f1e1da2be521f8a9.mockapi.io/maran/movies/${id}`,{
+        //     method : "DELETE"
+        // })
+        // .then(()=>getMovie());
     }
+
    
 
     return (

@@ -4,6 +4,7 @@ import { MovieList } from './Components/MovieDashboard';
 import { MovieDetail } from './Components/MovieDetail';
 import { Routes, Route, useNavigate} from "react-router-dom";
 import { Home } from './Components/Home';
+import { ErrorPage } from './Components/ErrorPage';
 import { useState } from 'react';
 import { AddMovie } from './Components/AddMovie';
 import * as React from 'react';
@@ -15,10 +16,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import IconButton from '@mui/material/IconButton';
-
-
- 
-
 
 function App() {
   const [mode,setMode] = useState('light');
@@ -53,6 +50,8 @@ function App() {
         <Route path="/movie-details/:id" element={<MovieDetail/>} />
         <Route path="/movie-list" element={<MovieList />} />
         <Route path="/addmovie" element={<AddMovie/>} />
+        <Route path="*" element={<ErrorPage/>} />
+
       </Routes>
     </div>
     </ThemeProvider>
