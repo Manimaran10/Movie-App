@@ -16,6 +16,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import IconButton from '@mui/material/IconButton';
+import { EditMovie } from './Components/EditMovie';
 
 function App() {
   const [mode,setMode] = useState('light');
@@ -50,9 +51,10 @@ function App() {
         <Route path="/movie-details/:id" element={<MovieDetail/>} />
         <Route path="/movie-list" element={<MovieList />} />
         <Route path="/addmovie" element={<AddMovie/>} />
+        <Route path="/movie-list/edit/:id" element={<EditMovie />} />
         <Route path="*" element={<ErrorPage/>} />
 
-      </Routes>
+      </Routes> 
     </div>
     </ThemeProvider>
   );

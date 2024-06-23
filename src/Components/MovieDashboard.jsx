@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 // import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import { MovieDisplay } from './MovieDisplay';
 import { IconButton } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 export function MovieList(){
     const [movieList,setMovieList] =  useState([]);
@@ -23,7 +25,7 @@ export function MovieList(){
         // .then(()=>getMovie());
     }
 
-   
+    const navigate = useNavigate();
 
     return (
     <div>
@@ -38,6 +40,14 @@ export function MovieList(){
                     sx={{marginLeft :'auto',
                     }} color='error' onClick={()=>deleteMovie(val.id)}>
                         <DeleteIcon fontSize='small'/>
+                    </IconButton>}
+                editButton={
+                    <IconButton 
+                    sx={{marginLeft :'auto',
+                        fontSize : 'smaller'}}
+                        onClick={()=>navigate(`/movie-list/edit/${val.id}`)}
+                        color='secondary' >
+                        <EditIcon fontSize='small'/>
                     </IconButton>}
                 />
                  

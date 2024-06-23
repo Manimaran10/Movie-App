@@ -11,7 +11,7 @@ import ExpandLessRoundedIcon from '@mui/icons-material/ExpandLessRounded';
 import { IconButton } from '@mui/material';
 
 
-export function MovieDisplay({ poster, name, rating, summary, id,deleteButton }) {
+export function MovieDisplay({ poster, name, rating, summary, id,deleteButton,editButton }) {
     const [toggle, setToggle] = useState(true);
     const navigate = useNavigate();
     
@@ -53,7 +53,7 @@ export function MovieDisplay({ poster, name, rating, summary, id,deleteButton })
                     <IconButton 
                         sx={{fontSize : 'medium'}}
                         onClick={()=>likedMovie()}
-                        color={likeValue ? 'primary' : 'null'}
+                        color={likeValue ? 'success' : 'null'}
                         >👍</IconButton>
                     <IconButton 
                         sx={{fontSize : 'medium'}}
@@ -61,7 +61,7 @@ export function MovieDisplay({ poster, name, rating, summary, id,deleteButton })
                         color={disLikeValue ? 'primary' : 'null'}
                         
                         >👎</IconButton>
-                    {deleteButton}
+                    {deleteButton} {editButton}
                 </CardActions>
             </Card>
         </div>

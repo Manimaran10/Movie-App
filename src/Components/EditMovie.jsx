@@ -1,17 +1,28 @@
-// import { useState } from "react"
+import { useState,useEffect } from "react"
 import Button from '@mui/material/Button';
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
 import {useFormik} from "formik";
 import * as yup from "yup";
 
-// import { setMovieList } from "../App";
 
 
 
-export function AddMovie(){
-   
+export function EditMovie(){
+  const { id } = useParams();
+  const[detail, setDetail]= useState(null);
+
+  useEffect(()=>{
+      fetch(`https://666f1937f1e1da2be521f8a9.mockapi.io/maran/movies/${id}`)
+          .then((data)=>data.json())
+              .then((mvs)=>setDetail(mvs))
+  },[id])
+  console.log(detail);
+  return detail ? <EditMovieForm detail ={detail}/> : <h3>Loading...</h3>
+}
+
+  function EditMovieForm({detail}){ 
     const formValidation = yup.object(
       {name : yup.string().required('Enter the movie name'),
        poster : yup.string().required('Enter the poster link').url('Poster must be a valid URL'),
@@ -19,32 +30,33 @@ export function AddMovie(){
        summary : yup.string().required('Enter movie summary').min(20, 'Summary must have atleast 20 letters').max(250)
       }
     )
+    
     const {handleBlur,handleChange,handleSubmit,touched,errors,values} = useFormik({
       initialValues : {
-        name : '',
-        poster : '',
-        rating : '',
-        summary : ''
+        name : detail.name,
+        poster : detail.poster,
+        rating : detail.rating,
+        summary : detail.summary
       },
       validationSchema : formValidation,
-      onSubmit :(newMovie)=>{
-        console.log('Formvalues', newMovie);
-        addingMovie(newMovie)}
+      onSubmit :(updatedMovie)=>{
+        console.log('Formvalues', updatedMovie);
+        updateMovie(updatedMovie)}
     })
    
     const navigate = useNavigate();
 
-    const addingMovie = async (newMovie)=>{  
-      await fetch("https://666f1937f1e1da2be521f8a9.mockapi.io/maran/movies",{
-        method : "POST",
-        body : JSON.stringify(newMovie),
+    const updateMovie = async (updatedMovie)=>{  
+      await fetch(`https://666f1937f1e1da2be521f8a9.mockapi.io/maran/movies/${detail.id}`,{
+        method : "PUT",
+        body : JSON.stringify(updatedMovie),
         headers:{"Content-Type": "application/json",},
       })
       navigate("/movie-list")
     }
     
     return(
-    <form onSubmit={handleSubmit} className="addmovie-form">
+    <form onSubmit={handleSubmit} className="edit-movie-form">
       <TextField id="outlined-basic" sx={{ width: 350}}
       type="text"
       placeholder="Title" 
@@ -55,7 +67,7 @@ export function AddMovie(){
       error = {errors.name && touched.name}
       helperText = {errors.name && touched.name ? errors.name : null}
       />
-      
+
       <TextField id="outlined-basic" sx={{ width: 350}}
         type="text"
         placeholder="Poster" 
@@ -89,8 +101,9 @@ export function AddMovie(){
         helperText = {errors.summary && touched.summary ? errors.summary : null}
        />
       
-      <Button type="submit" variant="contained" >
-        Add Movie</Button>  
+      <Button type="submit" color="success" variant="contained" >
+      SAVE
+      </Button>  
             
     </form>
         
