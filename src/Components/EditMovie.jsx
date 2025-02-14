@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import { useNavigate,useParams } from "react-router-dom";
 import {useFormik} from "formik";
 import * as yup from "yup";
+import { API } from "../global";
 
 
 
@@ -14,7 +15,7 @@ export function EditMovie(){
   const[detail, setDetail]= useState(null);
 
   useEffect(()=>{
-      fetch(`https://666f1937f1e1da2be521f8a9.mockapi.io/maran/movies/${id}`)
+      fetch(`${API}/maran/movies/${id}`)
           .then((data)=>data.json())
               .then((mvs)=>setDetail(mvs))
   },[id])
@@ -47,7 +48,7 @@ export function EditMovie(){
     const navigate = useNavigate();
 
     const updateMovie = async (updatedMovie)=>{  
-      await fetch(`https://666f1937f1e1da2be521f8a9.mockapi.io/maran/movies/${detail.id}`,{
+      await fetch(`${API}/maran/movies/${detail.id}`,{
         method : "PUT",
         body : JSON.stringify(updatedMovie),
         headers:{"Content-Type": "application/json",},

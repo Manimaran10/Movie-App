@@ -5,12 +5,13 @@ import EditIcon from '@mui/icons-material/Edit';
 import { MovieDisplay } from './MovieDisplay';
 import { IconButton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { API } from '../global';
 
 export function MovieList(){
     const [movieList,setMovieList] =  useState([]);
   
     const getMovie =()=>{
-        fetch("https://666f1937f1e1da2be521f8a9.mockapi.io/maran/movies")
+        fetch(`${API}/maran/movies`)
         .then((data)=>data.json())
           .then ((mvs)=>setMovieList(mvs))
     }
@@ -19,7 +20,7 @@ export function MovieList(){
 
     const deleteMovie=(id)=>{
         console.log("Delete movie", id);
-        // fetch(`https://666f1937f1e1da2be521f8a9.mockapi.io/maran/movies/${id}`,{
+        // fetch(`${API}/maran/movies/${id}`,{
         //     method : "DELETE"
         // })
         // .then(()=>getMovie());

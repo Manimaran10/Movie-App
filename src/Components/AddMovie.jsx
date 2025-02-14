@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import { useNavigate } from "react-router-dom";
 import {useFormik} from "formik";
 import * as yup from "yup";
+import { API } from '../global';
 
 // import { setMovieList } from "../App";
 
@@ -35,7 +36,7 @@ export function AddMovie(){
     const navigate = useNavigate();
 
     const addingMovie = async (newMovie)=>{  
-      await fetch("https://666f1937f1e1da2be521f8a9.mockapi.io/maran/movies",{
+      await fetch(`${API}/maran/movies`,{
         method : "POST",
         body : JSON.stringify(newMovie),
         headers:{"Content-Type": "application/json",},

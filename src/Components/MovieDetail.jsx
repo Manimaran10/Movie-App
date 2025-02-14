@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { API } from '../global';
 // import { movieList } from './MovieDashboard';
 
 
@@ -9,7 +10,7 @@ export function MovieDetail() {
     const[detail, setDetail]= useState({});
 
     useEffect(()=>{
-        fetch(`https://666f1937f1e1da2be521f8a9.mockapi.io/maran/movies/${id}`)
+        fetch(`${API}/maran/movies/${id}`)
             .then((data)=>data.json())
                 .then((mvs)=>setDetail(mvs))
     },[id])

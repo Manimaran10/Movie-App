@@ -3,12 +3,13 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import { API } from '../global';
 
 
 export function Home(){
     const[quote,setQuote] = useState([]);
     useEffect(()=>{
-        fetch('https://666f1937f1e1da2be521f8a9.mockapi.io/maran/directors')
+        fetch(`${API}/maran/directors`)
             .then((val)=>val.json())
                 .then((dir)=>setQuote(dir))
     },[]);
