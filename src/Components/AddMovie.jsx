@@ -36,7 +36,7 @@ export function AddMovie(){
     const navigate = useNavigate();
 
     const addingMovie = async (newMovie)=>{  
-      await fetch(`${API}/maran/movies`,{
+      await fetch(`${API}/movies`,{
         method : "POST",
         body : JSON.stringify(newMovie),
         headers:{"Content-Type": "application/json",},

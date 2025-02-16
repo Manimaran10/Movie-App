@@ -11,7 +11,7 @@ export function MovieList(){
     const [movieList,setMovieList] =  useState([]);
   
     const getMovie =()=>{
-        fetch(`${API}/maran/movies`)
+        fetch(`${API}/movies`)
         .then((data)=>data.json())
           .then ((mvs)=>setMovieList(mvs))
     }
@@ -20,7 +20,7 @@ export function MovieList(){
 
     const deleteMovie=(id)=>{
         console.log("Delete movie", id);
-        // fetch(`${API}/maran/movies/${id}`,{
+        // fetch(`${API}/movies/${id}`,{
         //     method : "DELETE"
         // })
         // .then(()=>getMovie());

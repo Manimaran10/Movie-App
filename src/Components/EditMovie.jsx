@@ -15,7 +15,7 @@ export function EditMovie(){
   const[detail, setDetail]= useState(null);
 
   useEffect(()=>{
-      fetch(`${API}/maran/movies/${id}`)
+      fetch(`${API}/movies/${id}`)
           .then((data)=>data.json())
               .then((mvs)=>setDetail(mvs))
   },[id])

@@ -9,7 +9,7 @@ import { API } from '../global';
 export function Home(){
     const[quote,setQuote] = useState([]);
     useEffect(()=>{
-        fetch(`${API}/maran/directors`)
+        fetch(`${API}/directors`)
             .then((val)=>val.json())
                 .then((dir)=>setQuote(dir))
     },[]);

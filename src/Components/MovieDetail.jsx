@@ -10,7 +10,7 @@ export function MovieDetail() {
     const[detail, setDetail]= useState({});
 
     useEffect(()=>{
-        fetch(`${API}/maran/movies/${id}`)
+        fetch(`${API}/movies/${id}`)
             .then((data)=>data.json())
                 .then((mvs)=>setDetail(mvs))
     },[id])
