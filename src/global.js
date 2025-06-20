@@ -2,4 +2,4 @@
 
 // export const API ="http://localhost:4000";  //->Local Mongo compass API
 
-export const API = "https://node-crud-eta.vercel.app/" //-> Vercel API
+export const API = "https://node-crud-eta.vercel.app" //-> Vercel API
